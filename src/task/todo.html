@@ -1,0 +1,21 @@
+<template>
+  <div>
+    <input
+      type="text"
+      value.bind="newTaskDescription"
+      placeholder="Add your task here"
+      keyup.delegate="onInputKeyDown($event)"
+    />
+    <button click.delegate="addTask()">Add</button>
+  </div>
+  <ul style="list-style-type: none;">
+    <li repeat.for="task of todoList">
+      <input type="checkbox" checked.bind="task.done" />
+      <span css="text-decoration: ${task.done ? 'line-through' : 'none'}">
+        ${task.description}</span
+      >
+      <button click.delegate="editTask(task.taskId)">Edit</button>
+      <button click.delegate="removeTask(task.taskId)">Remove</button>
+    </li>
+  </ul>
+</template>
